@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'sinatra/cookies'
 
+set :protection, false
+set :protect_from_csrf, false
 set :cookie_options, { httponly: false }
 
 get '/' do
@@ -42,5 +44,13 @@ get '/view-cookie' do
 </table>
 
 <p><a href="/">Top</a>
+EOH
+end
+
+get '/iframe' do
+  <<EOH
+<script>
+document.cookie = 'foo=abc; domain=ie-3rd-party-cookie.herokuapp.com; path=/';
+</script>
 EOH
 end
