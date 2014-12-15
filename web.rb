@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'sinatra/cookies'
 
+set :cookie_options, { httponly: false }
+
 get '/' do
   <<EOH
 <title>3rd Cookie Block test on IE</title>
