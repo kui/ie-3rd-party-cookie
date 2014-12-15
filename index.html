@@ -1,0 +1,23 @@
+<!doctype html>
+
+<meta charset="utf-8">
+<title>IE のサードパーティークッキーブロックの挙動検証</title>
+<h1>IE のサードパーティークッキーブロックの挙動検証</h1>
+
+<p>IE のサードパーティークッキーブロックの挙動を検証をするために用意したページ。</p>
+
+<p>このサイト(kui.github.io)がメディアページ、<code>ie-3rd-party-cookie.herokuapp.com</code>が
+  第三者サイト（広告配信システムや DMP）相当を想定している。</p>
+
+<ol>
+<li>第三者サイトの Cookie に何もセットされていないのを確認:
+  <a href="http://ie-3rd-party-cookie.herokuapp.com/view-cookie">View Cookies</a></li>
+<li>第三者サイトの Cookie をセット:
+  <a href="http://ie-3rd-party-cookie.herokuapp.com/set-cookie">Set Cookies</a></li>
+<li>第三者サイトの Cookie に <code>foo</code>, <code>bar</code> がセットされているのを確認:
+  <a href="http://ie-3rd-party-cookie.herokuapp.com/view-cookie">View Cookies</a></li>
+<li>このサイトから ie-3rd-party-cookie.herokuapp.com の Cookie に書き込む:
+  <a href="set-3rd-party-cookie.html">Set 3rd Party Cookie</a></li>
+<li>第三者サイトの Cookie を確認:
+  <a href="http://ie-3rd-party-cookie.herokuapp.com/view-cookie">View Cookies</a></li>
+</ol>
