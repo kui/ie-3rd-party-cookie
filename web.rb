@@ -20,6 +20,7 @@ end
 get '/set-cookie' do
   cookies[:foo] = "123"
   cookies[:bar] = "456"
+  headers 'P3P' => 'CP="ADM NOI OUR"'
   <<EOH
 <title>Set Cookies</title>
 <h1>Set Cookies</h1>
@@ -48,6 +49,7 @@ EOH
 end
 
 get '/iframe' do
+  headers 'P3P' => 'CP="ADM NOI OUR"'
   <<EOH
 <script>
 document.cookie = 'foo=abc; domain=ie-3rd-party-cookie.herokuapp.com; path=/';
