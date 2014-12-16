@@ -56,3 +56,16 @@ document.cookie = 'foo=abc; domain=ie-3rd-party-cookie.herokuapp.com; path=/';
 </script>
 EOH
 end
+
+get '/with-p3p' do
+  content_type 'application/json'
+  headers 'P3P' => 'CP="ADM NOI OUR"'
+  cookies[:foo] = "value-with-p3p"
+  ''
+end
+
+get '/without-p3p' do
+  content_type 'application/json'
+  cookies[:foo] = "value-without-p3p"
+  ''
+end
