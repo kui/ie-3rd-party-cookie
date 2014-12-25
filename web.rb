@@ -11,8 +11,12 @@ get '/' do
 <h1>3rd Cookie Block test on IE</h1>
 
 <ul>
-<li><a href="/set-cookie">set cookies</a>
-<li><a href="/view-cookie">view cookies</a>
+<li><a href="/set-cookie"><code>/set-cookie</code></a>
+<li><a href="/view-cookie"><code>/view-cookie</code></a>
+<li><a href="/iframe"><code>/iframe</code>: should be loaded via iframe</a>
+<li><a href="/with-p3p"><code>/with-p3p</code>: response empty <code>application/json</code> with the P3P header</a>
+<li><a href="/without-p3p"><code>/without-p3p</code>: response empty <code>application/json</code> without the P3P header</a>
+<li><a href="/js-with-p3p"><code>/js-with-p3p</code>: response JavaScript, which set some Cookie, with the P3P header</a>
 </ul>
 EOH
 end
@@ -43,8 +47,6 @@ get '/view-cookie' do
 <tr><th>Name</th><th>Value</th></tr>
 #{c}
 </table>
-
-<p><a href="/">Top</a>
 EOH
 end
 
@@ -68,4 +70,10 @@ get '/without-p3p' do
   content_type 'application/json'
   cookies[:foo] = "value-without-p3p"
   ''
+end
+
+get '/js-with-p3p' do
+  content_type 'text/javascript'
+  headers 'P3P' => 'CP="ADM NOI OUR"'
+  document.cookie = 'foo=abc; domain=ie-3rd-party-cookie.herokuapp.com; path=/';
 end
